@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 import { getCharacterById } from "../service/characters";
 import Episode from "./Episode";
+import "./episodesList.css";
 
 export default class EpisodesList extends Component {
   constructor(props) {
@@ -13,6 +14,10 @@ export default class EpisodesList extends Component {
   }
 
   componentDidMount() {
+    this.fetchCharacter();
+  }
+
+  fetchCharacter() {
     getCharacterById(this.props.id).then((response) => {
       this.setState({
         episodes: response.episode,
@@ -21,16 +26,29 @@ export default class EpisodesList extends Component {
     });
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.id !== prevProps.id) {
+      this.fetchCharacter();
+    }
+  }
+
   render() {
     return (
-      <div>
+      <div className="episodeList">
         {this.state.episodes && this.state.image ? (
-          <>
-            <img src={this.state.image} />
-            {this.state.episodes.map((episodeURL) => (
-              <Episode episodeURL={episodeURL} />
-            ))}
-          </>
+          <div className="infosContainer">
+            <img
+              src={this.state.image}
+              alt="character"
+              className="characterImage"
+            />
+
+            <div className="episodeInfo">
+              {this.state.episodes.map((episodeURL) => (
+                <Episode episodeURL={episodeURL} />
+              ))}
+            </div>
+          </div>
         ) : (
           <p>Loading...</p>
         )}

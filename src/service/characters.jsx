@@ -16,6 +16,6 @@ export function getCharacterById(id) {
 
 export function getCharactersByName(name) {
   return axios.get(url + `?name=${name}`).then((response) => {
-    return response.data.name;
+    return response.data.results;
   });
 }

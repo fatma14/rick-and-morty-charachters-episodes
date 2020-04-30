@@ -14,13 +14,15 @@ export default class App extends Component {
   }
 
   changeCharacterId(id) {
+    console.log("change", id);
     this.setState({
       chosenCharacterId: id,
     });
   }
   render() {
+    console.log("render");
     return (
-      <div>
+      <div className="appContainer">
         <SearchPage changeCharacterId={(id) => this.changeCharacterId(id)} />
         {this.state.chosenCharacterId !== undefined ? (
           <EpisodesList id={this.state.chosenCharacterId} />

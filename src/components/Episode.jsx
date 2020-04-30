@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import getEpisodeById from "../service/episodes";
+import "./episode.css";
 
 export default class Episode extends Component {
   constructor(props) {
@@ -23,10 +24,14 @@ export default class Episode extends Component {
 
   render() {
     return (
-      <div>
+      <div className="episodeContainer">
         <h3> {this.state.name} </h3>
-        <div> {this.state.code} </div>
-        <div> {this.state.air_date} </div>
+        <div>
+          <b>Episode Code:</b> {this.state.code}{" "}
+        </div>
+        <div>
+          <b>Air Date:</b> {this.state.air_date}{" "}
+        </div>
       </div>
     );
   }

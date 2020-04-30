@@ -1,0 +1,21 @@
+.infosContainer {
+  margin-top: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.episodeInfo {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.characterImage {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.episodeList {
+  flex-grow: 2;
+}
