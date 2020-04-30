@@ -12,13 +12,13 @@ export default class Episode extends Component {
       air_date: "",
     };
   }
-  componentDidMount() {
-    getEpisodeById(this.props.episodeURL).then((response) => {
-      this.setState({
-        name: response.name,
-        air_date: response.air_date,
-        code: response.episode,
-      });
+
+  async componentDidMount() {
+    const response = await getEpisodeById(this.props.episodeURL);
+    this.setState({
+      name: response.name,
+      air_date: response.air_date,
+      code: response.episode,
     });
   }
 
@@ -27,10 +27,10 @@ export default class Episode extends Component {
       <div className="episodeContainer">
         <h3> {this.state.name} </h3>
         <div>
-          <b>Episode Code:</b> {this.state.code}{" "}
+          <b>Episode Code:</b> {this.state.code}
         </div>
         <div>
-          <b>Air Date:</b> {this.state.air_date}{" "}
+          <b>Air Date:</b> {this.state.air_date}
         </div>
       </div>
     );

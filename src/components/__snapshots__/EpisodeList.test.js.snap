@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EpisodeList Unit tests should change character when new id is passed 1`] = `
+<div
+  className="episodeList"
+>
+  <div
+    className="infosContainer"
+  >
+    <img
+      alt="character"
+      className="characterImage"
+      src="anotherImage"
+    />
+    <div
+      className="episodeInfo"
+    >
+      <mock-episode
+        episodeURL="episodeUrl1"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`EpisodeList Unit tests should match snapshot 1`] = `
+<div
+  className="episodeList"
+>
+  <div
+    className="infosContainer"
+  >
+    <img
+      alt="character"
+      className="characterImage"
+      src="imageUrl"
+    />
+    <div
+      className="episodeInfo"
+    >
+      <mock-episode
+        episodeURL="episodeUrl1"
+      />
+      <mock-episode
+        episodeURL="episodeUrl2"
+      />
+    </div>
+  </div>
+</div>
+`;

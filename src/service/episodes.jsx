@@ -1,5 +1,6 @@
 import axios from "axios";
 
-export default function getEpisodeById(url) {
-  return axios.get(url).then((response) => response.data);
+export default async function getEpisodeById(url) {
+  const response = axios.get(url);
+  return response.data;
 }

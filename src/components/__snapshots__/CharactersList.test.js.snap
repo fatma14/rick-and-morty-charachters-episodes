@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CharacterList unit tests should match snapshot 1`] = `
+<div
+  className="listElement"
+>
+  <button
+    className="characterName"
+    onClick={[Function]}
+  >
+    joe
+  </button>
+  <button
+    className="characterName"
+    onClick={[Function]}
+  >
+    jill
+  </button>
+</div>
+`;

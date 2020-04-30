@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchBar unit tests should match snapshot 1`] = `
+<div
+  className="searchBarContainer"
+>
+  <label>
+    <input
+      className="searchBar"
+      onChange={[Function]}
+      placeholder="Search character..."
+      type="text"
+      value="ein"
+    />
+  </label>
+</div>
+`;

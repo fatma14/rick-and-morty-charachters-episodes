@@ -2,20 +2,22 @@ import axios from "axios";
 
 const url = "https://rickandmortyapi.com/api/character/";
 
-export function getCharacters() {
-  return axios.get(url).then((response) => {
-    return response.data.results;
-  });
+export async function getCharacters() {
+  const response = await axios.get(url);
+  return response.data;
 }
 
-export function getCharacterById(id) {
-  return axios.get(url + `${id}`).then((response) => {
-    return response.data;
-  });
+export async function getCharacterById(id) {
+  const response = await axios.get(url + `${id}`);
+  return response.data;
 }
 
-export function getCharactersByName(name) {
-  return axios.get(url + `?name=${name}`).then((response) => {
-    return response.data.results;
-  });
+export async function getCharactersByName(name) {
+  const response = await axios.get(url + `?name=${name}`);
+  return response.data;
+}
+
+export async function getPage(url) {
+  const response = await axios.get(url);
+  return response.data;
 }

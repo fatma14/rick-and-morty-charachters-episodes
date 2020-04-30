@@ -17,12 +17,11 @@ export default class EpisodesList extends Component {
     this.fetchCharacter();
   }
 
-  fetchCharacter() {
-    getCharacterById(this.props.id).then((response) => {
-      this.setState({
-        episodes: response.episode,
-        image: response.image,
-      });
+  async fetchCharacter() {
+    const response = await getCharacterById(this.props.id);
+    this.setState({
+      episodes: response.episode,
+      image: response.image,
     });
   }
 
@@ -45,7 +44,7 @@ export default class EpisodesList extends Component {
 
             <div className="episodeInfo">
               {this.state.episodes.map((episodeURL) => (
-                <Episode episodeURL={episodeURL} />
+                <Episode key={episodeURL} episodeURL={episodeURL} />
               ))}
             </div>
           </div>

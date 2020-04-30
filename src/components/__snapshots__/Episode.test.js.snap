@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Episode Unit tests should match snapshot 1`] = `
+<div
+  className="episodeContainer"
+>
+  <h3>
+     
+    test 1
+     
+  </h3>
+  <div>
+    <b>
+      Episode Code:
+    </b>
+     
+  </div>
+  <div>
+    <b>
+      Air Date:
+    </b>
+     
+    4th July
+  </div>
+</div>
+`;

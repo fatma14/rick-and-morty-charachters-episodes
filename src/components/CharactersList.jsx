@@ -8,6 +8,7 @@ export default function CharactersList({ characters, selectCharacter }) {
     <div className="listElement">
       {characters.map((character) => (
         <Character
+          key={character.id}
           characterName={character.name}
           handleClick={() => {
             selectCharacter(character.id);
