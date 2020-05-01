@@ -21,3 +21,8 @@ export async function getPage(url) {
   const response = await axios.get(url);
   return response.data;
 }
+
+export async function getCharactersBySpecie(specie) {
+  const response = await axios.get(url + `?species=${specie}`);
+  return response.data;
+}

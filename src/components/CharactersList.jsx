@@ -11,7 +11,7 @@ export default function CharactersList({ characters, selectCharacter }) {
           key={character.id}
           characterName={character.name}
           handleClick={() => {
-            selectCharacter(character.id);
+            selectCharacter(character);
           }}
         />
       ))}

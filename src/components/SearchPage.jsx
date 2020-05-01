@@ -6,6 +6,7 @@ import {
   getCharacters,
   getCharactersByName,
   getPage,
+  getCharactersBySpecie,
 } from "../service/characters";
 import "./searchPage.css";
 
@@ -17,6 +18,8 @@ export default class SearchPage extends Component {
       searchPhrase: "",
       prev: undefined,
       next: undefined,
+      species: undefined,
+      recommendedCharacters: [],
     };
   }
 
@@ -37,17 +40,22 @@ export default class SearchPage extends Component {
 
   updateCharacters(response) {
     this.setState({
-      characters: response.results.map(({ id, name }) => ({
-        id,
-        name,
-      })),
+      characters: response.results,
       prev: response.info.prev === "" ? undefined : response.info.prev,
       next: response.info.next === "" ? undefined : response.info.next,
     });
   }
 
-  changeCharacterId(id) {
-    this.props.changeCharacterId(id);
+  async changeCharacterId(character) {
+    this.props.changeCharacterId(character.id);
+
+    if (!this.state.species) {
+      const response = await getCharactersBySpecie(character.species);
+      this.setState({
+        species: character.species,
+        recommendedCharacters: response.results.slice(0, 5), // Show 5 recommended characters
+      });
+    }
   }
 
   async handleClick(url) {
@@ -57,35 +65,48 @@ export default class SearchPage extends Component {
 
   render() {
     return (
-      <div className="searchBox">
-        <SearchBar handleChange={(value) => this.handleChange(value)} />
-        <CharactersList
-          characters={this.state.characters}
-          selectCharacter={(...arg) => this.changeCharacterId(...arg)}
-        />
-        <div className="buttons">
-          {this.state.prev !== undefined ? (
-            <button
-              className="navigationButtons"
-              onClick={(event) => {
-                event.preventDefault();
-                this.handleClick(this.state.prev);
-              }}
-            >
-              Prev
-            </button>
-          ) : null}
+      <div className="selectCharacter">
+        <div className="searchBox">
+          <SearchBar handleChange={(value) => this.handleChange(value)} />
+          <CharactersList
+            characters={this.state.characters}
+            selectCharacter={(...arg) => this.changeCharacterId(...arg)}
+          />
+          <div className="buttons">
+            {this.state.prev !== undefined ? (
+              <button
+                className="navigationButtons"
+                onClick={(event) => {
+                  event.preventDefault();
+                  this.handleClick(this.state.prev);
+                }}
+              >
+                Prev
+              </button>
+            ) : null}
 
-          {this.state.next !== undefined ? (
-            <button
-              className="navigationButtons"
-              onClick={(event) => {
-                event.preventDefault();
-                this.handleClick(this.state.next);
-              }}
-            >
-              next
-            </button>
+            {this.state.next !== undefined ? (
+              <button
+                className="navigationButtons"
+                onClick={(event) => {
+                  event.preventDefault();
+                  this.handleClick(this.state.next);
+                }}
+              >
+                next
+              </button>
+            ) : null}
+          </div>
+        </div>
+        <div className="recommendedCharacters">
+          {this.state.recommendedCharacters.length !== 0 ? (
+            <div className="recommendationBox">
+              <h3 className="recommendation">Recommended</h3>
+              <CharactersList
+                characters={this.state.recommendedCharacters}
+                selectCharacter={(...arg) => this.changeCharacterId(...arg)}
+              />
+            </div>
           ) : null}
         </div>
       </div>

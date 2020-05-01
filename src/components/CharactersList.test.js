@@ -33,6 +33,6 @@ describe("CharacterList unit tests", () => {
       .findAllByType("button")[0]
       .props.onClick({ preventDefault: () => {} });
 
-    expect(selectCharacter).toBeCalledWith(characters[0].id);
+    expect(selectCharacter).toBeCalledWith(characters[0]);
   });
 });

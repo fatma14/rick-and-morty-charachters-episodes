@@ -2,61 +2,129 @@
 
 exports[`SearchPage unit test Pagination should match snapshot with prev/next buttons 1`] = `
 <div
-  className="searchBox"
+  className="selectCharacter"
 >
-  <mock-SearchBar
-    handleChange={[Function]}
-  />
-  <mock-CharactersList
-    characters={
-      Array [
-        Object {
-          "id": 1,
-          "name": "test",
-        },
-      ]
-    }
-    selectCharacter={[Function]}
-  />
   <div
-    className="buttons"
+    className="searchBox"
   >
-    <button
-      className="navigationButtons"
-      onClick={[Function]}
+    <mock-SearchBar
+      handleChange={[Function]}
+    />
+    <mock-CharactersList
+      characters={
+        Array [
+          Object {
+            "id": 1,
+            "name": "test",
+          },
+        ]
+      }
+      selectCharacter={[Function]}
+    />
+    <div
+      className="buttons"
     >
-      Prev
-    </button>
-    <button
-      className="navigationButtons"
-      onClick={[Function]}
-    >
-      next
-    </button>
+      <button
+        className="navigationButtons"
+        onClick={[Function]}
+      >
+        Prev
+      </button>
+      <button
+        className="navigationButtons"
+        onClick={[Function]}
+      >
+        next
+      </button>
+    </div>
   </div>
+  <div
+    className="recommendedCharacters"
+  />
 </div>
 `;
 
 exports[`SearchPage unit test should match snapshot without prev/next buttons 1`] = `
 <div
-  className="searchBox"
+  className="selectCharacter"
 >
-  <mock-SearchBar
-    handleChange={[Function]}
-  />
-  <mock-CharactersList
-    characters={
-      Array [
-        Object {
-          "id": 1,
-          "name": "test",
-        },
-      ]
-    }
-    selectCharacter={[Function]}
-  />
   <div
-    className="buttons"
+    className="searchBox"
+  >
+    <mock-SearchBar
+      handleChange={[Function]}
+    />
+    <mock-CharactersList
+      characters={
+        Array [
+          Object {
+            "id": 1,
+            "name": "test",
+          },
+        ]
+      }
+      selectCharacter={[Function]}
+    />
+    <div
+      className="buttons"
+    />
+  </div>
+  <div
+    className="recommendedCharacters"
   />
+</div>
+`;
+
+exports[`SearchPage unit test should show recommended caracters after selecting a first caracter 1`] = `
+<div
+  className="selectCharacter"
+>
+  <div
+    className="searchBox"
+  >
+    <mock-SearchBar
+      handleChange={[Function]}
+    />
+    <mock-CharactersList
+      characters={
+        Array [
+          Object {
+            "id": 1,
+            "name": "test",
+            "species": "species",
+          },
+        ]
+      }
+      selectCharacter={[Function]}
+    />
+    <div
+      className="buttons"
+    />
+  </div>
+  <div
+    className="recommendedCharacters"
+  >
+    <div
+      className="recommendationBox"
+    >
+      <h3
+        className="recommendation"
+      >
+        Recommended
+      </h3>
+      <mock-CharactersList
+        characters={
+          Array [
+            Object {
+              "id": 2,
+              "name": "recommended",
+              "species": "species",
+            },
+          ]
+        }
+        selectCharacter={[Function]}
+      />
+    </div>
+  </div>
 </div>
 `;
